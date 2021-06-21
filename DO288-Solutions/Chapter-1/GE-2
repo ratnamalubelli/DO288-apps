@@ -1,1 +1,28 @@
-
+oc new-project deployappoc
+oc new-app --name deployappoc --strategy docker https://github.com/ratnamalubelli/DO288-apps#deployappoc --context-dir ubi-echo
+oc status
+oc get pods
+oc logs -f bc/deployappoc
+oc describe bc deployappoc
+oc describe db deployappoc
+oc describe is deployappoc
+oc describe get all
+git clone https://github.com/ratnamalubelli/DO288-apps
+cd DO288-apps
+git checkout -b deployappoc
+git push -u origin deployappoc
+cd ubi-sleep
+cat Dockerfile
+vi Dockerfile
+edit as needed(by using I) and save eac+:wq!
+git add  Dockerfile
+git commit -m "Added docker file changes"
+git push -u origin
+oc start-build bc/deployappoc
+oc get builds
+oc logs -f bc/deployappoc
+oc get pods
+oc logs containername
+oc get istag
+oc delete all -l app=deployappoc
+oc get all
