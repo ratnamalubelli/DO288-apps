@@ -1,1 +1,13 @@
-
+Managing an Application with the Web Console
+Go to console. login
+Home-->projecs-->create project-->give name
+import yaml-->add another content
+choose container image
+provide image name from external registry as "quay.io/redhattraining/php-hello-dockerfile" and create
+Go to workloads-->choose pods , deployment configs,secrets,configmaps etc
+click on workloads-->pods-->logs
+Go to workloads-->Replication set etc
+Go to Networking-->servicesm routes
+Go to workloads--> choose pods and -->choose podname -->actions -> delete pod
+similarly delete deployment,replication,routes etc
+Finally delete project
