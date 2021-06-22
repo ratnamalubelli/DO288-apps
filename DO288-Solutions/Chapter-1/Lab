@@ -1,1 +1,30 @@
 Deploying and Managing Applications on an OpenShift Cluster
+oc new-project soudepl
+oc new-app --name soudepl --strategy source --build-env npm_config_registry=https://registry.npmjs.org/ 
+nodejs:10~https://github.com/ratnamalubelli/DO288-apps#deployappoc --context-dir nodejs-helloworld
+oc get pods
+clear
+history
+oc logs -f bc/soudepl
+notice build failed with errors
+git clone https://github.com/ratnamalubelli/DO288-apps
+git checkout -b soudeplo
+git push -u origin soudeplo
+cd DO288-apps
+cd nodejs-helloworld
+pythom3 -m json.tool package.json
+observe that : is missing
+add that and checkin for that 
+vi package.json and add : then save using esc+:wq!
+git add package.json
+git commit -a -m 'Fixed JSON syntax'
+git push
+oc start-build soudepl
+oc logs -f bc/soudepl
+see build is successful
+oc get pods
+oc logs containername
+oc expose svc/soudepl
+oc get route
+curl http://route
+oc delete all -l app=soudepl
