@@ -11,3 +11,10 @@ edit to add permissions as below
 Expose 8080
 RUN sed -i "s/Listen 80/Listen 8080/g" /etc/httpd/conf/httpd.conf
 RUN chgrp -R 0 /var/log/httpd /var/run/httpd && chmod -R g=u /var/log/httpd /var/run/httpd
+oc delete all -l app=testci
+oc new-app --name testci --strategy docker https://github.com/ratnamalubelli/DO288-apps#ics --context-dir container-build
+oc get pods
+oc logs -f bc/testci
+oc expose svc/testci
+oc get route
+curl http://route
