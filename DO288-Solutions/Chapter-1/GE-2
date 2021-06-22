@@ -1,3 +1,5 @@
+Build and deploy application from a Docker file
+
 oc new-project deployappoc
 oc new-app --name deployappoc --strategy docker https://github.com/ratnamalubelli/DO288-apps#deployappoc --context-dir ubi-echo
 oc status
